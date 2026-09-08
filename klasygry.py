@@ -35,12 +35,28 @@ class Karta:
         return "czerwony"
 
 class Talia:
+    def __init__(self):
+        self.karty = []
+        for kolor in Kolor:
+            for figura in Figura:
+                karta=Karta(kolor, figura)
+                self.karty.append(karta)
 
 class Stos:
+    def __init__(self):
+        self.karty = []
     
 class StosRoboczy(Stos):
+    def __init__(self):
+        super().__init__()
     
 class StosKoncowy(Stos):
+    def __init__(self, kolor):
+        super().__init__()
+        self.kolor = kolor
     
 class StosDobierania(Stos):
+    def __init__(self):
+        super().__init__()
+        
     
