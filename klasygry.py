@@ -24,6 +24,15 @@ class Figura(Enum):
     KROL=13
 
 class Karta:
+    def __init__(self, kolor, figura):
+        self.kolor = kolor
+        self.figura = figura
+        
+    @property
+    def barwa(self):
+        if self.kolor in (Kolor.TREFL, Kolor.PIK):
+            return "czarny"
+        return "czerwony"
 
 class Talia:
 
