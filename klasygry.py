@@ -70,6 +70,36 @@ class Talia:
 class Stos:
     def __init__(self):
         self.karty = []
+        
+    def dodaj(self, karta):
+        self.karty.append(karta)
+
+    def zdejmij(self):
+        if self.czy_pusty():
+            return None
+
+        return self.karty.pop()
+
+    def wierzchnia(self):
+        if self.czy_pusty():
+            return None
+
+        return self.karty[-1]
+
+    def czy_pusty(self):
+        return len(self.karty)==0
+
+    def wyczysc(self):
+        self.karty.clear()
+
+    def __len__(self):
+        return len(self.karty)
+
+    def __str__(self):
+        return " | ".join(
+            str(karta)
+            for karta in self.karty
+        )
     
 class StosRoboczy(Stos):
     def __init__(self):
