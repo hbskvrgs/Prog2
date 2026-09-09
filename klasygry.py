@@ -27,12 +27,22 @@ class Karta:
     def __init__(self, kolor, figura):
         self.kolor = kolor
         self.figura = figura
+        self.odkryta = False
         
     @property
     def barwa(self):
         if self.kolor in (Kolor.TREFL, Kolor.PIK):
             return "czarny"
         return "czerwony"
+        
+    def odwroc(self):
+        self.odkryta = not self.odkryta
+
+    def odkryj(self):
+        self.odkryta = True
+
+    def zakryj(self):
+        self.odkryta = False
 
 class Talia:
     def __init__(self):
@@ -41,6 +51,21 @@ class Talia:
             for figura in Figura:
                 karta=Karta(kolor, figura)
                 self.karty.append(karta)
+                
+     def czy_pusta(self):
+        return len(self.karty) == 0
+
+    def __len__(self):
+        return len(self.karty)
+        
+     def dobierz(self):
+        if self.czy_pusta():
+            return None
+        return self.karty.pop()
+         
+    def tasuj(self):
+        random.shuffle(self.karty)
+
 
 class Stos:
     def __init__(self):
