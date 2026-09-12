@@ -246,5 +246,18 @@ class StosDobierania(Stos):
         if self.czy_pusty():
             return None
         return self.karty.pop()
+
+class StosOdrzuconych(Stos):
+    def __init__(self):
+        super().__init__()
+        
+    def dodaj(self, karta):
+        if karta is None:
+            return
+        karta.odkryj()
+        self.karty.append(karta)
+
+    def dostepna_karta(self):
+        return self.wierzchnia()
         
     
