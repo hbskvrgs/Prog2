@@ -35,6 +35,9 @@ class Gra:
             
 
     def dobierz_karte(self):
+        karta=self.stos_dobierania.dobierz()
+        self.stos_odrzuconych.dodaj(karta)
+        return True
 
     def odnow_stos_dobierania(self):
 
