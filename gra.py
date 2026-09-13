@@ -40,6 +40,12 @@ class Gra:
         return True
 
     def odnow_stos_dobierania(self):
+        if sekf.stos_odrzuconych.czy_pusty():
+            return False
+        while not self.stos_odrzuconych.czy_pusty():
+            karta = self.stos_odrzuconych.zdejmij()
+            self.stos_dobierania.dodaj(karta)
+        return True
 
     def przenies_odrzucona_na_roboczy(self):
 
