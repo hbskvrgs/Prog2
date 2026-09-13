@@ -56,7 +56,15 @@ class Gra:
             self.stos_dobierania.dodaj(karta)
         return True
 
-    def przenies_odrzucona_na_roboczy(self):
+    def przenies_odrzucona_na_roboczy(self, s):
+        karta = self.stos_odrzuconych.wierzchnia()
+        stos_docelowy = self.stosy_robocze[numer_stosu]
+        mozna= stos_docelowy.czy_mozna_dodac(karta):
+        if mozna==False:
+            return False
+        karta = self.stos_odrzuconych.zdejmij()
+        stos_docelowy.dodaj(karta)
+        return True
 
     def przenies_odrzucona_na_koncowy(self):
 
