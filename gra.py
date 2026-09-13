@@ -57,8 +57,10 @@ class Gra:
         return True
 
     def przenies_odrzucona_na_roboczy(self, s):
+        if self.stos_odrzuconych.czy_pusty():
+            return False
         karta = self.stos_odrzuconych.wierzchnia()
-        stos_docelowy = self.stosy_robocze[numer_stosu]
+        stos_docelowy = self.stosy_robocze[s]
         mozna= stos_docelowy.czy_mozna_dodac(karta):
         if mozna==False:
             return False
@@ -67,8 +69,28 @@ class Gra:
         return True
 
     def przenies_odrzucona_na_koncowy(self):
+        if self.stos_odrzuconych.czy_pusty():
+            return False
+        karta = self.stos_odrzuconych.wierzchnia()
+        stos_koncowy = self.stosy_koncowe[karta.kolor]
+        if not stos_koncowy.czy_mozna_dodac(karta):
+            return False
+        karta = self.stos_odrzuconych.zdejmij()
+        stos_koncowy.dodaj_karte(karta)
+        return True
 
     def przenies_roboczy_na_koncowy(self):
+        stos_roboczy = self.stosy_robocze[s]
+        if stos_roboczy.czy_pusty():
+            return False
+        karta = stos_roboczy.wierzchnia()
+        stos_koncowy = self.stosy_koncowe[karta.kolor]
+        if not stos_koncowy.czy_mozna_dodac(karta):
+            return False
+        stos_roboczy.zdejmij()
+        stos_koncowy.dodaj_karte(karta)
+        stos_roboczy.odkryj_wierzchnia()
+        return True
 
     def przenies_roboczy_na_roboczy(self):
 
