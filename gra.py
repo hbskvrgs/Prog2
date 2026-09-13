@@ -10,6 +10,17 @@ class Gra:
         self.nowa_gra()
         
     def nowa_gra(self):
+        self.talia = Talia()
+        self.talia.tasuj()
+        self.stosy_robocze = []
+        for i in range(7):
+            stos=StosRoboczy()
+            self.stosy_robocze.append(stos)
+        for kolor in Kolor:
+            stos=StosKoncowy(kolor)
+            self.stosy_koncowe[kolor]=stos
+        self.stos_dobierania = StosDobierania()
+        self.stos_odrzuconych = StosOdrzuconych()
         
     def rozdaj_karty(self):
 
