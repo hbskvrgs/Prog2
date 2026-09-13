@@ -21,8 +21,18 @@ class Gra:
             self.stosy_koncowe[kolor]=stos
         self.stos_dobierania = StosDobierania()
         self.stos_odrzuconych = StosOdrzuconych()
+        self.rodzaj_karty()
         
     def rozdaj_karty(self):
+        s=0
+        while s<7:
+            k=0
+            while k<=s:
+                karta=self.talia.dobierz()
+                self.stosy_robocze[s].dodaj(karta)
+                k=k+1
+            s=s+1
+            
 
     def dobierz_karte(self):
 
