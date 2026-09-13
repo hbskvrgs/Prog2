@@ -29,12 +29,21 @@ class Gra:
             k=0
             while k<=s:
                 karta=self.talia.dobierz()
+                if numer_karty==numer_stosu:
+                    karta.odkryj()
+                else:
+                    karta.zakryj()
                 self.stosy_robocze[s].dodaj(karta)
                 k=k+1
             s=s+1
+        while not self.talia.czy_pusta():
+            karta=self.talia.dobierz()
+            self.stos_dobierania.dodaj(karta)
             
 
     def dobierz_karte(self):
+        if self.stos_dobierania.czy_pusty():
+            return self.odnow_stos_dobierania()
         karta=self.stos_dobierania.dobierz()
         self.stos_odrzuconych.dodaj(karta)
         return True
@@ -43,7 +52,7 @@ class Gra:
         if sekf.stos_odrzuconych.czy_pusty():
             return False
         while not self.stos_odrzuconych.czy_pusty():
-            karta = self.stos_odrzuconych.zdejmij()
+            karta= self.stos_odrzuconych.zdejmij()
             self.stos_dobierania.dodaj(karta)
         return True
 
