@@ -49,7 +49,7 @@ class Gra:
         return True
 
     def odnow_stos_dobierania(self):
-        if sekf.stos_odrzuconych.czy_pusty():
+        if self.stos_odrzuconych.czy_pusty():
             return False
         while not self.stos_odrzuconych.czy_pusty():
             karta= self.stos_odrzuconych.zdejmij()
@@ -57,6 +57,10 @@ class Gra:
         return True
 
     def przenies_odrzucona_na_roboczy(self, s):
+        if s<0:
+            return False
+        if s>=7:
+            return False
         if self.stos_odrzuconych.czy_pusty():
             return False
         karta = self.stos_odrzuconych.wierzchnia()
@@ -80,6 +84,10 @@ class Gra:
         return True
 
     def przenies_roboczy_na_koncowy(self,s):
+        if s<0:
+            return False
+        if s>=7:
+            return False
         stos_roboczy = self.stosy_robocze[s]
         if stos_roboczy.czy_pusty():
             return False
@@ -93,9 +101,19 @@ class Gra:
         return True
 
     def przenies_roboczy_na_roboczy(self,s_zrodlowy,idx,s_docelowy):
+        if s_zrodlowy<0:
+            return False
+        if s_zrodlowy>=7:
+            return False
+        if s_docelowy<0:
+            return False
+        if s_docelowy>=7:
+            return False
         zrodlo = self.stosy_robocze[s_zrodlowy]
         cel = self.stosy_robocze[s_docelowy]
         sekwencja = zrodlo.pobierz_sekwencje(idx)
+        if len(sekwencja)==0:
+            return False
         mozna= cel.czy_mozna_dodac_sekwencje(sekwencja):
         if mozna==False:
             return False
@@ -106,6 +124,10 @@ class Gra:
         return True
 
     def przenies_koncowy_na_roboczy(self, kolor,s):
+        if s<0:
+            return False
+        if s>=7:
+            return False
         stos_koncowy = self.stosy_koncowe[kolor]
         stos_roboczy = self.stosy_robocze[s]
         if stos_koncowy.czy_pusty():
