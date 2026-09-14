@@ -109,6 +109,8 @@ class Gra:
             return False
         if s_docelowy>=7:
             return False
+        if s_zrodlowy==s_docelowy:
+            return False
         zrodlo = self.stosy_robocze[s_zrodlowy]
         cel = self.stosy_robocze[s_docelowy]
         sekwencja = zrodlo.pobierz_sekwencje(idx)
@@ -142,3 +144,8 @@ class Gra:
         
 
     def czy_wygrana(self):
+        for kolor in Kolor:
+            s=self.stosy_koncowe[kolor]
+            if s.czy_pelny()==False:
+                return False
+        return True
