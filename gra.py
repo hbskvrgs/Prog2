@@ -79,7 +79,7 @@ class Gra:
         stos_koncowy.dodaj_karte(karta)
         return True
 
-    def przenies_roboczy_na_koncowy(self):
+    def przenies_roboczy_na_koncowy(self,s):
         stos_roboczy = self.stosy_robocze[s]
         if stos_roboczy.czy_pusty():
             return False
@@ -92,8 +92,31 @@ class Gra:
         stos_roboczy.odkryj_wierzchnia()
         return True
 
-    def przenies_roboczy_na_roboczy(self):
+    def przenies_roboczy_na_roboczy(self,s_zrodlowy,idx,s_docelowy):
+        zrodlo = self.stosy_robocze[s_zrodlowy]
+        cel = self.stosy_robocze[s_docelowy]
+        sekwencja = zrodlo.pobierz_sekwencje(idx)
+        mozna= cel.czy_mozna_dodac_sekwencje(sekwencja):
+        if mozna==False:
+            return False
+        sekwencja = zrodlo.usun_sekwencje(idx)
+        for karta in sekwencja:
+            cel.karty.append(karty)
+        zrodlo.odkryj_wierzchnia()
+        return True
 
-    def przenies_koncowy_na_roboczy(self):
+    def przenies_koncowy_na_roboczy(self, kolor,s):
+        stos_koncowy = self.stosy_koncowe[kolor]
+        stos_roboczy = self.stosy_robocze[s]
+        if stos_koncowy.czy_pusty():
+            return False
+        karta = stos_koncowy.wierzchnia()
+        mozna= stos_roboczy.czy_mozna_dodac(karta)
+        if mozna==False:
+            return False
+        stos_koncowy.zdejmij()
+        stos_roboczy.dodaj(karta)
+        return True
+        
 
     def czy_wygrana(self):
