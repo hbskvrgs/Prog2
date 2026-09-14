@@ -65,7 +65,7 @@ class Gra:
             return False
         karta = self.stos_odrzuconych.wierzchnia()
         stos_docelowy = self.stosy_robocze[s]
-        mozna= stos_docelowy.czy_mozna_dodac(karta):
+        mozna= stos_docelowy.czy_mozna_dodac(karta)
         if mozna==False:
             return False
         karta = self.stos_odrzuconych.zdejmij()
@@ -116,7 +116,7 @@ class Gra:
         sekwencja = zrodlo.pobierz_sekwencje(idx)
         if len(sekwencja)==0:
             return False
-        mozna= cel.czy_mozna_dodac_sekwencje(sekwencja):
+        mozna= cel.czy_mozna_dodac_sekwencje(sekwencja)
         if mozna==False:
             return False
         sekwencja = zrodlo.usun_sekwencje(idx)
