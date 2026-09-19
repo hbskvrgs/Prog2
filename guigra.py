@@ -2,11 +2,15 @@ import pygame
 from gra import *
 from klasygry import *
 
+   
+      
 pygame.init()
 
 szerokosc=1200
 wysokosc=800
 odstep = 30
+szerokosc_karty=100
+wysokosc_karty=130
 ZIELONY = (20, 120, 60)
 BIALY = (255, 255, 255)
 CZARNY = (0, 0, 0)
@@ -166,7 +170,7 @@ while dziala == True:
                     wynik = (gra.przenies_odrzucona_na_koncowy())
                     if wynik == True:
                         komunikat = ("Przeniesiono na stos koncowy")
-                                                else:
+                    else:
                         komunikat = ("Nie mozna wykonac ruchu")
                     wyczysc_wybor()
                   
