@@ -21,7 +21,7 @@ class Gra:
             self.stosy_koncowe[kolor]=stos
         self.stos_dobierania = StosDobierania()
         self.stos_odrzuconych = StosOdrzuconych()
-        self.rodzaj_karty()
+        self.rozdaj_karty()
         
     def rozdaj_karty(self):
         s=0
@@ -29,7 +29,7 @@ class Gra:
             k=0
             while k<=s:
                 karta=self.talia.dobierz()
-                if numer_karty==numer_stosu:
+                if k==s:
                     karta.odkryj()
                 else:
                     karta.zakryj()
@@ -121,7 +121,7 @@ class Gra:
             return False
         sekwencja = zrodlo.usun_sekwencje(idx)
         for karta in sekwencja:
-            cel.karty.append(karty)
+            cel.karty.append(karta)
         zrodlo.odkryj_wierzchnia()
         return True
 
